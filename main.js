@@ -1,5 +1,7 @@
-import { render, ElementWrap, TextWrap, Component, createElement } from './toy-react'
+import { renderDom, ElementWrap, TextWrap, Component, createElement } from './toy-react'
 
+
+// 继承 Componet 使得Component 能过获取root element 和 set attribute 
 class MyComponent extends Component{
     render (){
         return <div>
@@ -12,7 +14,7 @@ class MyComponent extends Component{
 
 
 
-render(<MyComponent>
+renderDom(<MyComponent>
     <div id='test' class='test'>
         <div id='id1' data-a='a1'>内容1</div>
         <div id='id2' data-a='a2'>内容2</div>

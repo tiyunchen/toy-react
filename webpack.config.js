@@ -23,7 +23,7 @@ module.exports = {
                         // todo bable 里面 presets 和 plugins 的区别
                         presets: ['@babel/preset-env'],
                         plugins: [
-                            ['@babel/plugin-transform-react-jsx', {pragma: 'createElement'}] // todo pragma 又是什么呢
+                            ['@babel/plugin-transform-react-jsx', {pragma: 'createElement'}] // pragma 又是什么呢? 是一个 语法糖 用于替换 React.createElement
                         ]
                     }
                 }
