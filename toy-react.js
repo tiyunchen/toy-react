@@ -15,10 +15,9 @@ export class ElementWrap {
      * @param {*} value 
      */
     setAttribute(name, value){
-        console.log('match', name, )
+        // console.log('match', name, )
         if(name.match(/^on([\s\S]+)/)){
             const listen = RegExp.$1.replace(/[\s\S]/, c=> c.toLowerCase())
-            console.log('listen', listen, RegExp.$1)
             this.root.addEventListener(listen, value)
         } else{
             if(name === 'className'){
@@ -123,23 +122,23 @@ export class Component {
     }
 
 
-    setState(newStata){
+    setState(newState){
         if(this.state === null || typeof this.state !== 'object'){
-            this.state = newStata
+            this.state = newState
             this.rerender();
             return
         }
         let merge = (oldState, newState) => {
-            for (const p in newState) {
+            for (let p in newState) {
                 // 判断是否是个对象，如果是的话就要执行递归调用
-                if(newStata[p] === null || typeof newStata[p] !== 'object'){
-                    oldState[p] = newStata[p]
+                if(oldState[p] === null || typeof oldState[p] !== 'object'){
+                    oldState[p] = newState[p]
                 } else {
-                    merge(oldState[p], newStata[p])
+                    merge(oldState[p], newState[p])
                 }
             }
         }
-        merge(this.state, newStata)
+        merge(this.state, newState)
         // 触发重新渲染
         this.rerender()
     }
@@ -168,7 +167,7 @@ export function createElement(type, attributes, ...children){
     } else {
         // 这个 type 就是一个 自定义的Component 的 class 所以 直接 new type
         element = new type
-        console.log('new type', element)
+        // console.log('new type', element)
     }
     // 通过for 循环遍历所有的属性
     for (const key in attributes) {
@@ -179,8 +178,7 @@ export function createElement(type, attributes, ...children){
      let insertChildren = (children) => {
         for (let child of children) {
             const objectType = Object.prototype.toString.call(child).match(/\[object (\w*)\]/)[1].toLowerCase()
-            console.log('11111', child, objectType)
-            if(['string', 'boolean', 'number'].includes(objectType)){ // todo js 类型判断
+            if(['string'].includes(objectType)){ // todo js 类型判断
                 child = new TextWrap(child)
                 element.appendChild(child)
             } else if(child === null){

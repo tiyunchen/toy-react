@@ -12,6 +12,7 @@ class Square extends Component {
   }
   
   class Board extends Component {
+  
     renderSquare(i) {
       return (
         <Square
