@@ -1,11 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        body {
+body {
     font: 14px "Century Gothic", Futura, sans-serif;
     margin: 20px;
 }
@@ -56,9 +49,3 @@ ul {
 .game-info {
     margin-left: 20px;
 }
-    </style>
-</head>
-<body >
- <div id='root'></div>
-<script src="main.js"></script></body>
-</html>
