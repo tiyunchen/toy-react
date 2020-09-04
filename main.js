@@ -128,7 +128,10 @@ class Square extends Component {
   // ========================================
   
   renderDom(<Game />, document.getElementById("root"));
-  
+
+// console.log('game', game)
+
+
   function calculateWinner(squares) {
     const lines = [
       [0, 1, 2],
